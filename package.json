@@ -1,0 +1,20 @@
+{
+  "name": "travlr",
+  "author": "SNHU Victor <victor.feight@snhu.edu>",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "set NODE_ENV=production && node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "hbs": "~4.0.4",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "dotenv": "^12.0.3"
+  }
+}
