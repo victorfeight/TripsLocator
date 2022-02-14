@@ -68,3 +68,4 @@ connect();
 //Mongoose schema definition
 // require("../routes/trips");
 require("./trips");
+require("./blogposts");
