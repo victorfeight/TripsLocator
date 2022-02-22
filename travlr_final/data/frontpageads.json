@@ -1,0 +1,14 @@
+[
+  {
+    "href": "/rooms",
+    "image": "images/rooms.png"
+  },
+  {
+    "href": "/dives",
+    "image": "images/dive-site.png"
+  },
+  {
+    "href": "/foods",
+    "image": "images/food.png"
+  }
+]
