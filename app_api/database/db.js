@@ -7,27 +7,30 @@ if (process.env.NODE_ENV === "production") {
   dbURL = process.env.DB_HOST || process.env.MONGODB_URI;
 }
 
+// avoid current server discovery and monitoring engine is depreciated
+mongoose.set("useUnifiedTopology", true);
+
 const connect = () => {
   setTimeout(
     () =>
       mongoose.connect(dbURI, {
         useNewUrlParser: true,
+        useCreateIndex: true,
       }),
     1000
   );
 };
 
 mongoose.connection.on("connected", () => {
-  console.log("connected");
+  console.log(`Mongoose connected to ${dbURI}`);
 });
 
 mongoose.connection.on("error", (err) => {
-  console.log("error: " + err);
-  return connect();
+  console.log(`Mongoose connection error: `, err);
 });
 
 mongoose.connection.on("disconnected", () => {
-  console.log("disconnected");
+  console.log(`Mongoose disconnected`);
 });
 
 if (process.platform === "win32") {
@@ -66,7 +69,5 @@ process.on("SIGTERM", () => {
 connect();
 
 //Mongoose schema definition
-// require("../routes/trips");
-require("./trips");
-require("./blogposts");
-require("./user");
+require("./models/trips");
+require("./models/user");

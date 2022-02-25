@@ -4,19 +4,7 @@
 const request = require('request');
 const apiOptions = {
   server: 'http://localhost:3000'
-}
-
-
-// /* GET travel view */
-// const travel = (req, res) => {
-//     let pageTitle = process.env.npm_package_description + ' - Travel';
-//     res.render('travel', { title: pageTitle, trips, travel: true });
-// };
-
-// module.exports = {
-//   travel
-// };
-
+};
 
 const renderTravelList = (req, res, responseBody) => {
   let message = null;
@@ -27,14 +15,15 @@ const renderTravelList = (req, res, responseBody) => {
     responseBody = [];
   } else {
     if (!responseBody.length) {
-      message = 'No trips in database!'
+      message = 'No trips exist in database!'
     }
   }
 
   res.render('travel', {
     title: pageTitle,
     trips: responseBody,
-    message
+    message,
+    travel: true
   });
 };
 
@@ -46,8 +35,8 @@ const travelList = (req, res) => {
     method: 'GET',
     json: {},
   };
-  console.info('>> travelController.travelList calling ' + requestOptions.url);
   
+  console.info(' >> travelcontroller.travelList calling' + requestOptions.url);
   request(requestOptions, (err, { statusCode }, body) => {
     if(err) {
       console.error(err);

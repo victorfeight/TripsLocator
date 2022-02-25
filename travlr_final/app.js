@@ -8,19 +8,19 @@ var logger = require('morgan');
 const hbs = require('hbs');
 const passport = require('passport');
 
-require('./app_api/models/db');
+require('./app_api/database/db');
 
 require('./app_api/config/passport');
 
-const indexRouter = require("./app_server/routes/index");
-const usersRouter = require("./app_server/routes/users");
-const travelRouter = require("./app_server/routes/travel");
-const contactRouter = require("./app_server/routes/contact");
-const aboutRouter = require("./app_server/routes/about");
-const mealsRouter = require("./app_server/routes/meals");
-const newsRouter = require("./app_server/routes/news");
-const roomsRouter = require("./app_server/routes/rooms");
-const apiRouter = require("./app_api/routes/index");
+const indexRouter = require('./app_server/routes/index');
+const usersRouter = require('./app_server/routes/users');
+const travelRouter = require('./app_server/routes/travel');
+const roomsRouter = require('./app_server/routes/rooms');
+const newsRouter = require('./app_server/routes/news');
+const mealsRouter = require('./app_server/routes/meals');
+const contactRouter = require('./app_server/routes/contact');
+const aboutRouter = require('./app_server/routes/about');
+const apiRouter = require('./app_api/routes/index');
 var app = express();
 
 // view engine setup
@@ -39,7 +39,10 @@ app.use(passport.initialize());
 //allow CORS
 app.use('/api', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   next();
 })
@@ -47,20 +50,19 @@ app.use('/api', (req, res, next) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/travel', travelRouter);
+app.use('/rooms', roomsRouter);
+app.use('/news', newsRouter);
+app.use('/meals', mealsRouter);
 app.use('/contact', contactRouter);
 app.use('/about', aboutRouter);
-app.use('/meals', mealsRouter);
-app.use('/news', newsRouter);
-app.use('/rooms', roomsRouter);
 app.use('/api', apiRouter);
 
-//catch unauthorized error, and create 404
+//catch unauthorized error, and create 401
 app.use((err, req, res, next) => {
-  if(err.name === 'UnauthorizedError') {
-    res.status(401).json({"message": err.name + ": " + err.message});
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).json({ 'message': err.name + ': ' + err.message });
   }
-})
-
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

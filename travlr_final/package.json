@@ -7,24 +7,23 @@
     "start": "set NODE_ENV=production && node ./bin/www"
   },
   "dependencies": {
-    "@angular/cli": "^6.2.9",
     "@types/express": "^4.17.13",
     "cookie-parser": "~1.4.4",
     "crypto": "^1.0.1",
     "debug": "~2.6.9",
-    "eleventy": "^1.0.6",
     "express": "~4.16.1",
     "express-jwt": "^6.1.0",
-    "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.8",
+    "mongoose": "~5.9.2",
     "morgan": "~1.9.1",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "dotenv": "^12.0.4"
+    "dotenv": "^12.0.4",
+    "hbs": "^4.2.0",
+    "seedgoose": "^2.0.2"
   }
 }

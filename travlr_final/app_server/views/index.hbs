@@ -1,14 +1,15 @@
+<!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com -->
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>{{ title }}</title>
+	<title>Travlr Getaways Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 	<div id="background">
 		<div id="page">
-            {{> header}}
+			{{> header }}
 			<div id="contents">
 				<div id="adbox">
 					<img src="images/sea-sound.jpg" alt="Img">
@@ -23,15 +24,20 @@
 							<div>
 								<h3>Latest Blog</h3>
 								<ul>
-                        {{#each blogposts}}
 									<li>
-										<h4><a href="{{this.link}}">{{this.title}}</a></h4>
-										<span>{{this.date}}</span>
+										<h4><a href="news.html">2023 Best Beaches Contest Winners</a></h4>
+										<span>April 02, 2023</span>
 										<p>
-                                            {{{this.content}}}
+											Integer magna leo, posuere et dignissim vitae, porttitor at odio. Pellentesque a metus nec magna placerat volutpat. Nunc nisi mi, elementum sit amet...
 										</p>
 									</li>
-                        {{/each}}
+									<li>
+										<h4><a href="news.html">Top 10 Diving Spots</a></h4>
+										<span>May 29, 2023</span>
+										<p>
+											Maecenas scelerisque odio quis arcu fringilla malesuada. Nulla facilisi. In libero nulla, fermentum ut pretium ac, pharetra et eros...
+										</p>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -48,15 +54,19 @@
 					</div>
 				</div>
 				<div id="sidebar">
-        {{#each frontpageads}}
 					<div class="section">
-						<a href="{{this.href}}"><img src="{{this.image}}" alt="Img"></a>
+						<a href="rooms.html"><img src="images/rooms.png" alt="Img"></a>
 					</div>
-        {{/each}}
+					<div class="section">
+						<a href="dives.html"><img src="images/dive-site.png" alt="Img"></a>
+					</div>
+					<div class="section">
+						<a href="foods.html"><img src="images/food.png" alt="Img"></a>
+					</div>
 				</div>
 			</div>
 		</div>
-        {{> footer}}
+		{{> footer }}
 	</div>
 </body>
 </html>
